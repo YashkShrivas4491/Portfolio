@@ -78,6 +78,8 @@ export const DATA = {
       logoUrl: "/kreupai.jpeg",
       start: "Jan 2025",
       end: "Present",
+      description: [],
+      links: [],
     }
     ,
     {
@@ -168,6 +170,7 @@ export const DATA = {
         "- Successfully completed an **8-week online certified training** on Android App Development.",
         "- Developed a **ApnaKhana App** using **Android Studio** and **Kotlin**.",
       ],
+      links: []
     },
   ],
   education: [

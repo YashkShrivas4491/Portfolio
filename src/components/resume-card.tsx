@@ -32,13 +32,13 @@ export const ResumeCard = ({
   subtitle,
   href,
   period,
-  description,
-  links,
+  description = [], // Default fallback
+  links = [], // Default fallback
 }: ResumeCardProps) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
 
   const handleCardClick = () => {
-    if (description) {
+    if (description.length > 0) {
       setIsExpanded(!isExpanded);
     }
   };
@@ -52,7 +52,7 @@ export const ResumeCard = ({
       aria-label={`${title} resume`}
       className={cn(
         "block",
-        description ? "cursor-pointer" : "",
+        description.length > 0 ? "cursor-pointer" : "",
         !href ? "pointer-events-none" : ""
       )}
       onClick={handleCardClick}
@@ -73,7 +73,7 @@ export const ResumeCard = ({
                 <div className="flex items-center justify-between gap-x-2 text-base">
                   <h3 className="inline-flex items-center justify-center font-semibold leading-none text-xs sm:text-sm">
                     {title}
-                    {description ? (
+                    {description.length > 0 ? (
                       <ChevronRightIcon
                         className={cn(
                           "size-3 ml-1 translate-x-0 transform opacity-80 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:size-4",
@@ -92,7 +92,7 @@ export const ResumeCard = ({
               </div>
             </div>
           </CardHeader>
-          {description && (
+          {description.length > 0 && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{
@@ -104,7 +104,6 @@ export const ResumeCard = ({
                 ease: [0.16, 1, 0.3, 1],
               }}
               className="mt-2 text-xs sm:text-sm mb-4"
-              // @ts-ignore
               onClick={handleDescriptionClick}
             >
               <div className="prose prose-sm dark:prose-invert max-w-none">
@@ -126,7 +125,7 @@ export const ResumeCard = ({
                     {item}
                   </Markdown>
                 ))}
-                {links && (
+                {links.length > 0 && (
                   <div className="flex flex-wrap gap-x-2 mt-8">
                     {links.map((link, index) => (
                       <Link

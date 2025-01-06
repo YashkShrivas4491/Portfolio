@@ -1,3 +1,5 @@
+"use strict";
+
 import { HackathonCard } from "@/components/hackathon-card";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
@@ -87,7 +89,7 @@ export default function Page() {
                   badges={work.badges}
                   period={`${work.start} - ${work.end ?? "Present"}`}
                   description={work.description}
-                  links={work.links ? work.links : []}
+                  links={work.links} 
                 />
               </BlurFade>
             ))}
